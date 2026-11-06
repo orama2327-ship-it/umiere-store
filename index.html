@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LUMIÈRE متجر إكسسوارات نسائية أنيقة">
+<title>LUMIÈRE | متجر الإكسسوارات</title>
+<style>
+:root{--ink:#30251f;--gold:#9a7548;--cream:#fbf8f2;--sand:#eee5d8;--muted:#77695b}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+a{color:inherit}.announcement{background:var(--ink);color:#f7ead4;text-align:center;padding:10px;font-size:12px}
+header{background:#fffdf9;display:flex;justify-content:space-between;align-items:center;padding:18px max(5%,calc((100% - 1120px)/2));position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #30251f0d}
+.logo{font-family:Georgia,serif;color:var(--gold);font-size:28px;letter-spacing:3px;text-decoration:none}
+nav{display:flex;gap:22px;font-size:13px}nav a{text-decoration:none}
+.cart-btn,.primary,.add{border:0;cursor:pointer;border-radius:4px}
+.cart-btn{background:#fff;border:1px solid #d9c5a6;padding:10px 14px;color:#59452e}
+.hero{min-height:390px;display:grid;place-items:center;text-align:center;padding:60px 20px;background:linear-gradient(90deg,#f4eee4e8,#f4eee4a8),url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero small{letter-spacing:4px;color:#80613f}.hero h1{font-family:Georgia,serif;font-size:clamp(36px,6vw,64px);font-weight:400;margin:15px 0}.hero p{line-height:2;color:#5e5043}
+.primary{background:#765936;color:white;padding:13px 28px;margin-top:10px}
+.wrap{max-width:1120px;margin:auto;padding:55px 22px}.section-title{text-align:center;margin-bottom:26px}.section-title h2{font-family:Georgia,serif;font-weight:400;font-size:32px;margin:0 0 8px}.section-title p{font-size:13px;color:var(--muted)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.tools input{flex:1;min-width:180px;padding:12px;border:1px solid #ddd1c0;border-radius:4px;background:white}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #d8c9b2;border-radius:20px;background:transparent;padding:9px 15px;color:#705a41;cursor:pointer}.filter.active{background:#70563a;color:white}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:white;border:1px solid #eee5d9;border-radius:7px;overflow:hidden}.product img{width:100%;height:230px;object-fit:cover;background:#eee5d8;display:block}.details{padding:15px}.details h3{font-size:14px;min-height:38px;margin:0 0 10px}.price{color:var(--gold);font-weight:bold}.add{display:block;width:100%;background:var(--ink);color:white;padding:11px;margin-top:13px}
+.benefits{background:#f0e8dc;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;padding:35px max(5%,calc((100% - 1120px)/2));text-align:center}.benefits b{display:block;margin:9px 0;font-size:14px}.benefits span{font-size:12px;color:var(--muted)}
+.team{background:#fffdf9}.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.member{border:1px solid #eee4d7;padding:17px;border-radius:6px;background:white}.member b{color:#805d37}.member p{font-size:12px;line-height:1.8;color:var(--muted);margin-bottom:0}
+footer{background:var(--ink);color:#f4e6cf;text-align:center;padding:30px 15px;line-height:2;font-size:12px}footer .logo{color:#e2c69b}
+.overlay{position:fixed;inset:0;background:#0007;z-index:10;display:none;justify-content:flex-end}.overlay.open{display:flex}.drawer{width:min(440px,100%);height:100%;overflow:auto;background:#fffdf9;padding:24px}.drawer-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eee5d8;padding:8px 12px;cursor:pointer}.cart-line{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid #eee;font-size:13px}.qty button{border:0;background:#eee5d8;padding:5px 9px;cursor:pointer}.total{font-size:18px;font-weight:bold;margin:20px 0}.checkout-form input{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd1c0;border-radius:4px}.checkout-form button{width:100%}.notice{font-size:11px;color:#887966;line-height:1.8}
+@media(max-width:760px){nav{display:none}.products{grid-template-columns:repeat(2,1fr)}.product img{height:180px}.team-grid{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.products{gap:10px}.product img{height:145px}.details{padding:10px}.details h3{font-size:12px}.wrap{padding:40px 14px}}
+</style>
+</head>
+<body>
+<div class="announcement">✦ أناقتك تبدأ من التفاصيل — شحن لجميع مناطق المملكة ✦</div>
+<header>
+<a class="logo" href="#">LUMIÈRE</a>
+<nav><a href="#home">الرئيسية</a><a href="#products">المتجر</a><a href="#team">فريق العمل</a></nav>
+<button class="cart-btn" id="openCart">حقيبة التسوق 🛍️ <span id="count">0</span></button>
+</header>
+<section class="hero" id="home"><div><small>THE BEAUTY OF DETAILS</small><h1>لمسة من الفخامة</h1><p>لأن التفاصيل الصغيرة تصنع الفرق الكبير،<br>اكتشفي تشكيلتنا المختارة من الإكسسوارات الأنيقة.</p><a href="#products"><button class="primary">تسوقي الآن</button></a></div></section>
+<main>
+<section class="wrap" id="products">
+<div class="section-title"><h2>تسوقي مجموعتنا</h2><p>قطع مختارة لتكمّل أناقتك</p></div>
+<div class="tools"><input id="search" type="search" placeholder="ابحثي عن منتج..."><div class="filters" id="filters">
+<button class="filter active" data-cat="الكل">الكل</button><button class="filter" data-cat="السلاسل">السلاسل والعقود</button><button class="filter" data-cat="الأقراط">الأقراط</button><button class="filter" data-cat="الخواتم">الخواتم</button><button class="filter" data-cat="الأساور">الأساور</button>
+</div></div>
+<div class="products" id="productGrid"></div>
+</section>
+<section class="benefits"><div>✧<b>جودة مختارة</b><span>نهتم بأدق التفاصيل</span></div><div>♡<b>تغليف أنيق</b><span>تجربة جميلة من البداية</span></div><div>⌖<b>شحن محلي</b><span>لجميع مناطق المملكة</span></div><div>✉<b>خدمة العملاء</b><span>نسعد بخدمتكم</span></div></section>
+<section class="wrap team" id="team"><div class="section-title"><h2>فريق العمل</h2><p>وراء كل تفصيل فريق مبدع</p></div><div class="team-grid">
+<div class="member"><b>راما</b><p>قائدة المشروع والمدير التنفيذي: التنسيق العام ومتابعة تنفيذ المهام.</p></div>
+<div class="member"><b>رشيدة</b><p>مديرة المبيعات والمالية: التسعير وتسجيل المبيعات والأرباح.</p></div>
+<div class="member"><b>مريم</b><p>مديرة خدمة العملاء: الرد على الاستفسارات ومتابعة رضا العملاء.</p></div>
+<div class="member"><b>آلاء</b><p>مديرة المنتجات والمخزون: تصنيف المنتجات ومتابعة الكميات والجودة.</p></div>
+<div class="member"><b>حلا</b><p>مسؤولة التصميم: الشعار والهوية البصرية والبطاقات.</p></div>
+<div class="member"><b>يسرى</b><p>مسؤولة التسويق: النصوص الإعلانية والتخطيط للمنشورات.</p></div>
+<div class="member"><b>صباح</b><p>مسؤولة التصوير والميديا: تصوير المنتجات وتجهيز الفيديوهات.</p></div>
+<div class="member"><b>ريماس</b><p>مسؤولة التغليف والعمليات: تجهيز الطلبات والتغليف والشحن.</p></div>
+</div></section>
+</main>
+<footer><div class="logo">LUMIÈRE</div>الجمال يكمن في التفاصيل<br>طرق الدفع المقترحة: مدى · Apple Pay · البطاقات · تمارا · الدفع عند الاستلام<br>الشحن المقترح: 2–4 أيام عمل<br>© 2026 جميع الحقوق محفوظة</footer>
+<div class="overlay" id="overlay"><aside class="drawer"><div class="drawer-head"><h2>حقيبة التسوق</h2><button class="close" id="closeCart">إغلاق ✕</button></div><div id="cartItems"></div><div class="total">الإجمالي: <span id="total">0</span> ريال</div>
+<form class="checkout-form" id="orderForm"><h3>بيانات الطلب التجريبي</h3><input required placeholder="الاسم الكامل"><input required type="tel" placeholder="رقم التواصل"><input required placeholder="المدينة والعنوان"><button class="primary" type="submit">تأكيد الطلب التجريبي</button></form>
+<p class="notice">تنبيه: هذا نموذج مدرسي للعرض فقط. لا يتم إرسال الطلبات أو تحصيل المدفوعات فعلياً، وطرق الدفع والشحن المذكورة خيارات مقترحة وليست مفعّلة.</p><p id="orderMsg" role="status"></p></aside></div>
+<script>
+const products=[
+{name:'سلسلة اللؤلؤ الناعمة',price:85,cat:'السلاسل',img:'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80'},
+{name:'عقد الزركون الملكي المرصع',price:140,cat:'السلاسل',img:'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80'},
+{name:'سلسلة الحرف الأبجدي المطلية بالذهب',price:95,cat:'السلاسل',img:'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80'},
+{name:'أقراط الحلقات الدائرية الذهبية',price:65,cat:'الأقراط',img:'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80'},
+{name:'أقراط اللؤلؤ المتدلية',price:75,cat:'الأقراط',img:'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=700&q=80'},
+{name:'طقم خواتم ناعمة متعددة الطبقات',price:90,cat:'الخواتم',img:'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80'},
+{name:'خاتم الزركون الفاخر',price:110,cat:'الخواتم',img:'https://images.unsplash.com/photo-1603561596112-0a132b757442?auto=format&fit=crop&w=700&q=80'},
+{name:'أسوارة التنس الكريستالية',price:120,cat:'الأساور',img:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=80'},
+{name:'أسوارة الجليد النحاسية',price:80,cat:'الأساور',img:'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=700&q=80'}
+];
+let category='الكل',cart=[];
+const $=s=>document.querySelector(s);
+function renderProducts(){let q=$('#search').value.trim();$('#productGrid').innerHTML='';products.forEach((p,i)=>{if((category==='الكل'||p.cat===category)&&p.name.includes(q)){let el=document.createElement('article');el.className='product';el.innerHTML=`<img src="${p.img}" alt="${p.name}" loading="lazy"><div class="details"><h3>${p.name}</h3><div class="price">${p.price} ريال</div><button class="add" data-add="${i}">أضيفي إلى السلة +</button></div>`;$('#productGrid').append(el)}})}
+function renderCart(){$('#count').textContent=cart.reduce((s,x)=>s+x.qty,0);$('#cartItems').innerHTML='';cart.forEach(x=>{let p=products[x.id],row=document.createElement('div');row.className='cart-line';row.innerHTML=`<span>${p.name}<br>${p.price} ريال × ${x.qty}</span><span class="qty"><button data-dec="${x.id}">−</button> <button data-inc="${x.id}">+</button> <button data-del="${x.id}">حذف</button></span>`;$('#cartItems').append(row)});$('#total').textContent=cart.reduce((s,x)=>s+products[x.id].price*x.qty,0);if(!cart.length)$('#cartItems').innerHTML='<p>حقيبتك فارغة حالياً.</p>'}
+$('#productGrid').addEventListener('click',e=>{let id=e.target.dataset.add;if(id===undefined)return;id=+id;let item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});renderCart()});
+$('#filters').addEventListener('click',e=>{if(!e.target.dataset.cat)return;category=e.target.dataset.cat;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===e.target));renderProducts()});
+$('#search').addEventListener('input',renderProducts);
+$('#cartItems').addEventListener('click',e=>{let b=e.target,id=+(b.dataset.inc??b.dataset.dec??b.dataset.del);if(!Number.isFinite(id))return;let x=cart.find(x=>x.id===id);if(b.dataset.inc!==undefined)x.qty++;else if(b.dataset.dec!==undefined)x.qty--;else x.qty=0;cart=cart.filter(x=>x.qty>0);renderCart()});
+$('#openCart').onclick=()=>$('#overlay').classList.add('open');$('#closeCart').onclick=()=>$('#overlay').classList.remove('open');
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();if(!cart.length){$('#orderMsg').textContent='أضيفي منتجاً إلى السلة أولاً.';return}$('#orderMsg').textContent='تم تسجيل الطلب التجريبي للعرض فقط. لا يوجد دفع أو شحن فعلي.';});
+renderProducts();renderCart();
+</script>
+</body></html>
